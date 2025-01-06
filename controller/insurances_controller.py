@@ -20,7 +20,7 @@ class InsurancesController:
     @classmethod
     def remove(cls, insurance_id):
         InsuranceDa.remove(insurance_id)
-        return True, f"Insurance({insurance_id}) saved successfully"
+        return True, f"Insurance({insurance_id}) removed successfully"
 
     @classmethod
     def find_all(cls):

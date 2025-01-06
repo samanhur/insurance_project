@@ -41,3 +41,13 @@ create table insurance_project.customers
     status        tinyint
 );
 
+-- table for saving admins
+create table insurance_project.admins
+(
+    admin_id int primary key auto_increment,
+    name     nvarchar(30) not null,
+    family   nvarchar(30) not null,
+    username nvarchar(30) not null unique,
+    password nvarchar(30) not null
+);
+

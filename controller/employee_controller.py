@@ -20,7 +20,7 @@ class EmployeeController:
     @classmethod
     def remove(cls, person_id):
         EmployeeDa.remove(person_id)
-        return True, f"Employee({person_id}) saved successfully"
+        return True, f"Employee({person_id}) removed successfully"
 
     @classmethod
     def find_all(cls):

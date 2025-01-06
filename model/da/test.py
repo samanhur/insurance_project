@@ -41,3 +41,21 @@
 # print(EmployeeDa.find_all())
 # print(EmployeeDa.find_by_id(1))
 # print(EmployeeDa.find_by_username("mghasemi"))
+
+# -----------------------------------------------------------
+# admin_da.py test passed!
+
+# from model.da.admin_da import AdminDa
+# from model.entity.admin import Admin
+#
+# admin = Admin("saman", "ghasemi", "samanhur", "1234567890")
+# admin.admin_id = 1
+
+# AdminDa.save(admin)
+# AdminDa.edit(admin)
+# AdminDa.remove(1)
+#
+# print(AdminDa.find_all())
+# print(AdminDa.find_by_id(1))
+# print(AdminDa.find_by_username("samanhur"))
+# print(AdminDa.find_by_username("mehdi"))
