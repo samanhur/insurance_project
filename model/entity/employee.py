@@ -8,4 +8,3 @@ class Employee(Person):
 
         self.role = role
         self.salary = salary
-

@@ -3,17 +3,30 @@ import tkinter.ttk
 
 
 class CreateTreeview:
-    def __init__(self, master, columns_number, show, columns_width, column_title, x, y):
+    def refresh_table(self, data_list, column_id=None):
+        for item in self.table.get_children():
+            self.table.delete(item)
+
+        if not column_id:
+            if data_list:
+                for data in data_list:
+                    self.table.insert("", END, values=tuple(data[1:]))
+        else:
+            if data_list:
+                for data in data_list:
+                    self.table.insert("", END, values=tuple(data))
+
+    def __init__(self, master, columns_number, show, columns_width, column_height, column_title, x, y):
         columns = []
         for i in range(columns_number):
             columns.append(i)
         columns = tuple(columns)
-        table = tkinter.ttk.Treeview(master, columns=columns, show=show)
+        self.table = tkinter.ttk.Treeview(master, columns=columns, show=show, height=column_height)
         for i in range(len(columns)):
-            table.column(i, width=columns_width)
-            table.heading(i, text=column_title[i])
+            self.table.column(i, width=columns_width)
+            self.table.heading(i, text=column_title[i])
 
-        table.place(x=x, y=y)
+        self.table.place(x=x, y=y)
 
 
 class TextWithLabel:

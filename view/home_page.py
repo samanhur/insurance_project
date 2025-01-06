@@ -1,4 +1,5 @@
 import tkinter as tk
+from insurances_page import InsurancesPage
 
 
 class HomePage(tk.Tk):
@@ -11,8 +12,8 @@ class HomePage(tk.Tk):
     def personnel(self):
         print("personnel")
 
-    def products(self):
-        print("products")
+    def insurances(self):
+        InsurancesPage()
 
     def __init__(self):
         super().__init__()
@@ -48,10 +49,10 @@ class HomePage(tk.Tk):
         description = "some description about company"
         tk.Label(self, text=description, bg=bg_color, font=("Arial", 10)).place(x=160, y=160)
 
-        # Product button for showing insurances list
-        self.product_button = tk.Button(self, text="Products", bg=bg_color, width=15, font=("Arial", 18),
-                                        command=self.products)
-        self.product_button.place(x=148, y=230)
+        # Insurance button for showing insurances list
+        self.insurance_button = tk.Button(self, text="insurances", bg=bg_color, width=15, font=("Arial", 18),
+                                          command=self.insurances)
+        self.insurance_button.place(x=145, y=230)
 
         self.mainloop()
 
