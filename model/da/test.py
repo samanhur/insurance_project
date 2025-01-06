@@ -59,3 +59,32 @@
 # print(AdminDa.find_by_id(1))
 # print(AdminDa.find_by_username("samanhur"))
 # print(AdminDa.find_by_username("mehdi"))
+
+# -----------------------------------------------------------
+# customer_da.py test passed!
+
+# from model.da.customer_da import CustomerDa
+# from model.entity.customer import Customer
+# from datetime import date
+
+# customer = Customer("saman", "ghasemi", "mohammad", "1234567890",
+#                     date(2004, 7, 31), "09351303460", "samanhovar", "saman123",
+#                     0)
+# customer.person_id = 1
+
+# customer1 = Customer("ali", "alipour", "reza", "1234575890",
+#                     date(2004,7,31), "09197788331", "alip", "ali123",
+#                     1)
+# customer1.person_id = 4
+
+# CustomerDa.save(customer)
+# CustomerDa.save(customer1)
+# CustomerDa.remove(4)
+# CustomerDa.edit(customer)
+
+# print(CustomerDa.find_by_status(1))
+# print(CustomerDa.find_all())
+# print(CustomerDa.find_by_id(5))
+# print(CustomerDa.find_by_id(6))
+# print(CustomerDa.find_by_national_code("1234575890"))
+# print(CustomerDa.find_by_username("alip"))

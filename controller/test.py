@@ -1,4 +1,5 @@
 # insurances_controller.py test passed!
+from datetime import date
 
 # from controller.insurances_controller import InsurancesController
 
@@ -33,7 +34,7 @@
 # print(EmployeeController.find_by_username("samanhur"))
 
 # ---------------------------------------------------------------
-# admin_controller test passed!
+# admin_controller.py test passed!
 
 # from controller.admin_controller import AdminController
 
@@ -45,3 +46,23 @@
 # print(AdminController.find_by_username("saman"))
 # AdminController.remove(2)
 # print(AdminController.find_all())
+
+# ---------------------------------------------------------------
+# customer_controller.py test passed!
+
+# from controller.customer_controller import CustomerController
+
+
+# CustomerController.save("mohammad", "ghasemi", "ali", "1245789630", date(1990,8,27),
+#                         "09122724558", "mehdi", "mehdi1351", 1)
+
+# CustomerController.edit(7, "mohammad", "ghasemi", "ali", "1245789630", date(1990,8,27),
+#                         "09121234567", "mehdi", "mehdigh", 1)
+
+# CustomerController.remove(6)
+
+# print(CustomerController.find_all())
+# print(CustomerController.find_by_national_code("1234575890"))
+# print(CustomerController.find_by_status(1))
+# print(CustomerController.find_by_username("mehdigh"))
+# print(CustomerController.find_by_id(1))

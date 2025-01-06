@@ -28,19 +28,6 @@ create table insurance_project.employees
 
 );
 
--- table for saving customers information
-create table insurance_project.customers
-(
-    person_id     int primary key auto_increment,
-    name          nvarchar(30) not null,
-    family        nvarchar(30) not null,
-    national_code varchar(10) not null,
-    birth_date    date        not null,
-    username      nvarchar(30) unique not null,
-    password      nvarchar(30) not null,
-    status        tinyint
-);
-
 -- table for saving admins
 create table insurance_project.admins
 (
@@ -51,3 +38,17 @@ create table insurance_project.admins
     password nvarchar(30) not null
 );
 
+-- table for saving customers
+create table insurance_project.customers
+(
+    person_id     int primary key auto_increment,
+    name          nvarchar(30) not null,
+    family        nvarchar(30) not null,
+    father_name   nvarchar(30) not null,
+    national_code varchar(10) unique not null,
+    birth_date    date        not null,
+    phone         varchar(12),
+    username      nvarchar(30) unique not null,
+    password      nvarchar(30) not null,
+    status        tinyint
+);
