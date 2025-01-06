@@ -13,3 +13,31 @@
 # InsuranceDa.edit(insurance)
 # InsuranceDa.remove(5)
 # print(insurance.__dict__)
+
+# -------------------------------------------------------------------------------------
+
+# employee_da.py test passed!
+
+# from model.entity.employee import Employee
+# from model.da.employee_da import EmployeeDa
+# from datetime import date
+
+# employee = Employee("saman", "ghasemi", "1234567890", date(2004, 7, 31),
+#                      "samanhur", "saman123", 1, "employee", 60000)
+# employee.person_id = 1
+
+# employee2 = Employee("mohammad", "ghasemi", "1234567809", date(1990, 12, 10),
+#                       "mghasemi", "101255", 1, "boss", 100000)
+# employee2.person_id = 2
+
+# EmployeeDa.save(employee)
+# EmployeeDa.save(employee2)
+
+# EmployeeDa.edit(employee2)
+
+# EmployeeDa.remove(1)
+# EmployeeDa.remove(2)
+
+# print(EmployeeDa.find_all())
+# print(EmployeeDa.find_by_id(1))
+# print(EmployeeDa.find_by_username("mghasemi"))
