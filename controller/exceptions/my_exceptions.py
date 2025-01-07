@@ -31,3 +31,8 @@ class InvalidPasswordError(Exception):
 class InvalidAmountError(Exception):
     def __init__(self, *args):
         super().__init__(*args, "Amount entered is not valid!")
+
+
+class InvalidTimeDurationError(Exception):
+    def __init__(self, *args):
+        super().__init__(*args, "Time duration entered is not valid!\nIt's must be from(days, month, year, years)")

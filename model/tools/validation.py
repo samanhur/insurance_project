@@ -80,3 +80,11 @@ class Validator:
             return amount
         else:
             raise InvalidAmountError()
+
+    @classmethod
+    @exception_handling
+    def time_duration_validator(cls, time_duration):
+        if isinstance(time_duration, str) and time_duration in ("days", "month", "year", "years"):
+            return time_duration
+        else:
+            raise InvalidTimeDurationError()
