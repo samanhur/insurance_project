@@ -30,8 +30,8 @@ class CreateTreeview:
 
 
 class TextWithLabel:
-    def __init__(self, master, text, x, y, data_type="str", key_press_event=None):
-        tkinter.Label(master, text=text).place(x=x, y=y)
+    def __init__(self, master, text, x, y,bg_color, data_type="str", key_press_event=None):
+        tkinter.Label(master, text=text, bg=bg_color).place(x=x, y=y)
         match data_type:
             case "str":
                 self.value = StringVar()
@@ -44,4 +44,4 @@ class TextWithLabel:
         text_box = tkinter.Entry(master, textvariable=self.value)
         if key_press_event:
             text_box.bind("<KeyRelease>", key_press_event)
-        text_box.place(x=x + 120, y=y)
+        text_box.place(x=x + 80, y=y)

@@ -1,18 +1,25 @@
 import tkinter as tk
 from insurances_page import InsurancesPage
+from view.login_view import LoginPage
+from view.personnel_page import Personnel
+from view.signup_view import SignUp
 
 
 class HomePage(tk.Tk):
     def sign_up(self):
-        print("sign up")
+        self.destroy()
+        SignUp()
 
     def login(self):
-        print("login")
+        self.destroy()
+        LoginPage("customer")
 
     def personnel(self):
-        print("personnel")
+        self.destroy()
+        Personnel()
 
-    def insurances(self):
+    @classmethod
+    def insurances(cls):
         InsurancesPage()
 
     def __init__(self):
@@ -57,4 +64,4 @@ class HomePage(tk.Tk):
         self.mainloop()
 
 
-page = HomePage()
+home_page = HomePage()
