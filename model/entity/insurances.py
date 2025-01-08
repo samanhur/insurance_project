@@ -9,7 +9,6 @@ class Insurances:
         self.duration_period = duration_period
         self.cost = cost
 
-
     @property
     def service(self):
         return self._service

@@ -1,14 +1,22 @@
 from model.da.customer_da import CustomerDa
 from model.entity.customer import Customer
+from model.tools.decorators import exception_handling
+from controller.exceptions.my_exceptions import DuplicateUsernameError, DuplicateNationalCodeError
 
 
 class CustomerController:
 
     @classmethod
+    @exception_handling
     def save(cls, name, family, father_name, national_code, birth_date, phone, username, password, status):
-        customer = Customer(name, family, father_name, national_code, birth_date, phone, username, password, status)
-        CustomerDa.save(customer)
-        return True, f"Customer({customer}) saved successfully"
+        if CustomerController.find_by_username(username)[0]:
+            raise DuplicateUsernameError()
+        elif CustomerController.find_by_national_code(national_code)[0]:
+            raise DuplicateNationalCodeError()
+        else:
+            customer = Customer(name, family, father_name, national_code, birth_date, phone, username, password, status)
+            CustomerDa.save(customer)
+            return True, f"Customer({customer}) saved successfully"
 
     @classmethod
     def edit(cls, person_id, name, family, father_name, national_code, birth_date, phone, username, password, status):

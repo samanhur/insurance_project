@@ -1,3 +1,4 @@
+from controller.exceptions.my_exceptions import DuplicateUsernameError, DuplicateNationalCodeError
 from model.da.employee_da import EmployeeDa
 from model.entity.employee import Employee
 
@@ -6,6 +7,10 @@ class EmployeeController:
 
     @classmethod
     def save(cls, name, family, national_code, birth_date, username, password, status, role, salary):
+        if EmployeeController.find_by_username(username)[0]:
+            raise DuplicateUsernameError()
+        elif EmployeeController.find_by_national_code(national_code)[0]:
+            raise DuplicateNationalCodeError()
         employee = Employee(name, family, national_code, birth_date, username, password, status, role, salary)
         EmployeeDa.save(employee)
         return True, f"Employee({employee}) saved successfully"
@@ -33,3 +38,7 @@ class EmployeeController:
     @classmethod
     def find_by_username(cls, username):
         return True, EmployeeDa.find_by_username(username)
+
+    @classmethod
+    def find_by_national_code(cls, national_code):
+        return True, EmployeeDa.find_by_national_code(national_code)

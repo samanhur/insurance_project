@@ -1,3 +1,4 @@
+from controller.exceptions.my_exceptions import DuplicateUsernameError
 from model.da.admin_da import AdminDa
 from model.entity.admin import Admin
 
@@ -6,9 +7,12 @@ class AdminController:
 
     @classmethod
     def save(cls, name, family, username, password):
-        admin = Admin(name, family, username, password)
-        AdminDa.save(admin)
-        return True, f"Admin({admin}) saved successfully"
+        if AdminController.find_by_username(username)[0]:
+            raise DuplicateUsernameError()
+        else:
+            admin = Admin(name, family, username, password)
+            AdminDa.save(admin)
+            return True, f"Admin({admin}) saved successfully"
 
     @classmethod
     def edit(cls, name, family, username, password, person_id):

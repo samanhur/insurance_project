@@ -57,3 +57,11 @@ class EmployeeDa(Da):
         employees_list = cls.cursor.fetchall()
         cls.disconnect()
         return employees_list
+
+    @classmethod
+    def find_by_national_code(cls, national_code):
+        cls.connect()
+        cls.cursor.execute("SELECT * FROM EMPLOYEES WHERE NATIONAL_CODE=%s", [national_code])
+        employee = cls.cursor.fetchone()
+        cls.disconnect()
+        return employee

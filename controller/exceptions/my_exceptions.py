@@ -36,3 +36,22 @@ class InvalidAmountError(Exception):
 class InvalidTimeDurationError(Exception):
     def __init__(self, *args):
         super().__init__(*args, "Time duration entered is not valid!\nIt's must be from(days, month, year, years)")
+
+
+class DuplicateUsernameError(Exception):
+    def __init__(self, *args):
+        super().__init__(*args, "Username already exists! choose another one.")
+
+
+class DuplicateNationalCodeError(Exception):
+    def __init__(self, *args):
+        super().__init__(*args, "National code already exists!")
+
+
+class NotFoundError(Exception):
+    def __init__(self, *args):
+        super().__init__(*args, "404, Not found error!")
+
+
+__all__ = ["InvalidNameError", "InvalidNationalCodeError", "InvalidDateError", "InvalidPhoneError",
+           "InvalidUsernameError", "InvalidPasswordError", "InvalidAmountError", "InvalidTimeDurationError"]
