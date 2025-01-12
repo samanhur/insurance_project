@@ -26,8 +26,7 @@ class CreateTreeview:
     def left_click_table(self, event):
         selected_id = self.table.focus()
         if self.table.item(selected_id)["values"]:
-            print("click correctly")
-            print(self.table.item(selected_id)["values"])
+            pass
 
     def __init__(self, master, columns_number, show, columns_width, column_height, column_title, x, y, clickable=True,
                  enter=False, buy=False):

@@ -18,6 +18,17 @@ class CustomerPage(tk.Tk):
     def insurances(self):
         insurance_customer = InsuranceBuy()
 
+    def customer_set_info(self):
+        self.name.value.set(self.customer_info.name)
+        self.family.value.set(self.customer_info.family)
+        self.father_name.value.set(self.customer_info.father_name)
+        self.father_name.value.set(self.customer_info.father_name)
+        self.national_code.value.set(self.customer_info.national_code)
+        self.birth_date.value.set(self.customer_info.birth_date)
+        self.phone.value.set(self.customer_info.phone)
+        self.username.value.set(self.customer_info.username)
+        self.password.value.set(self.customer_info.password)
+
     def __init__(self, customer_info):
         super().__init__(None)
 
@@ -56,7 +67,8 @@ class CustomerPage(tk.Tk):
 
         self.reset_form()
 
-        self.mainloop()
+        self.customer_set_info()
 
+        self.mainloop()
 
 # customer_page = CustomerPage()

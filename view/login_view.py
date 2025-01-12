@@ -1,19 +1,38 @@
 import tkinter as tk
 import tkinter.messagebox as msg
 
+from controller.admin_controller import AdminController
 from controller.customer_controller import CustomerController
-from model.entity.customer import Customer
+from controller.employee_controller import EmployeeController
+from view.admin_view import AdminPage
 from view.components.components import TextWithLabel
 from view.customer_view import CustomerPage
+from view.employee_view import EmployeePage
 
 
 class LoginPage(tk.Tk):
     def login_admin(self):
-        # self.destroy()
-        print("login admin")
+        status = AdminController.find_by_username_and_password(
+            self.username_entry.value.get(),
+            self.password_entry.value.get(),
+        )
+        if status:
+            self.destroy()
+            AdminPage()
+        else:
+            msg.showerror("login Error", "Username or Password is not correct!")
 
     def login_employee(self):
-        print("login employee")
+        status = EmployeeController.find_by_username_and_password(
+            self.username_entry.value.get(),
+            self.password_entry.value.get(),
+        )
+        if status:
+            self.destroy()
+            # EmployeePage(employee)
+            EmployeePage()
+        else:
+            msg.showerror("login Error", "Username or Password is not correct!")
 
     def login_customer(self):
         status, customer = CustomerController.find_by_username_and_password(
@@ -60,6 +79,5 @@ class LoginPage(tk.Tk):
         self.login_key.place(x=144, y=155)
 
         self.mainloop()
-
 
 # login_page = LoginPage("customer")

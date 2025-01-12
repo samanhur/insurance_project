@@ -2,7 +2,9 @@ import tkinter as tk
 import tkinter.messagebox as msg
 
 from controller.customer_controller import CustomerController
+from model.entity.customer import Customer
 from view.components.components import TextWithLabel
+from view.customer_view import CustomerPage
 
 
 class SignupPage(tk.Tk):
@@ -22,6 +24,16 @@ class SignupPage(tk.Tk):
                     )
                     if status:
                         msg.showinfo("Customer Saved", "You Singed up!")
+                        customer_info = Customer(self.name.value.get(),
+                                                 self.family.value.get(),
+                                                 self.father_name.value.get(),
+                                                 self.national_code.value.get(),
+                                                 self.birth_date.value.get(),
+                                                 self.phone.value.get(),
+                                                 self.username.value.get(),
+                                                 self.password.value.get(), 1)
+                        CustomerPage(customer_info=customer_info)
+                        self.destroy()
                     else:
                         msg.showerror("Save Error", message)
                 else:
@@ -59,6 +71,5 @@ class SignupPage(tk.Tk):
         self.signup_button.place(x=20, y=440)
 
         self.mainloop()
-
 
 # page = SignupPage("Customer")

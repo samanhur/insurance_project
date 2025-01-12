@@ -8,12 +8,10 @@ class Personnel(tk.Tk):
     def employee(self):
         self.destroy()
         LoginPage("employee")
-        print("employee")
 
     def admin(self):
         self.destroy()
         LoginPage("admin")
-        print("admin")
 
     def __init__(self):
         super().__init__()
@@ -31,5 +29,3 @@ class Personnel(tk.Tk):
         self.admin_button.place(x=60, y=80)
 
         self.mainloop()
-
-

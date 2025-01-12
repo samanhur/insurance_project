@@ -36,22 +36,30 @@ class AdminDa(Da):
     def find_all(cls):
         cls.connect()
         cls.cursor.execute("SELECT * FROM ADMINS")
-        insurances_list = cls.cursor.fetchall()
+        admins_list = cls.cursor.fetchall()
         cls.disconnect()
-        return insurances_list
+        return admins_list
 
     @classmethod
     def find_by_id(cls, admin_id):
         cls.connect()
         cls.cursor.execute("SELECT * FROM ADMINS WHERE ADMIN_ID=%s", [admin_id])
-        insurance = cls.cursor.fetchone()
+        admin = cls.cursor.fetchone()
         cls.disconnect()
-        return insurance
+        return admin
 
     @classmethod
     def find_by_username(cls, username):
         cls.connect()
         cls.cursor.execute("SELECT * FROM ADMINS WHERE USERNAME=%s", [username])
-        insurances_list = cls.cursor.fetchall()
+        admins_list = cls.cursor.fetchall()
         cls.disconnect()
-        return insurances_list
+        return admins_list
+
+    @classmethod
+    def find_by_username_and_password(cls, username, password):
+        cls.connect()
+        cls.cursor.execute("SELECT * FROM ADMINS WHERE USERNAME=%s AND PASSWORD=%s", [username, password])
+        admin = cls.cursor.fetchone()
+        cls.disconnect()
+        return admin

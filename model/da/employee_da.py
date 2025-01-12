@@ -65,3 +65,11 @@ class EmployeeDa(Da):
         employee = cls.cursor.fetchone()
         cls.disconnect()
         return employee
+
+    @classmethod
+    def find_by_username_and_password(cls, username, password):
+        cls.connect()
+        cls.cursor.execute("SELECT * FROM EMPLOYEES WHERE USERNAME=%s AND PASSWORD=%s", [username, password])
+        employee = cls.cursor.fetchone()
+        cls.disconnect()
+        return employee

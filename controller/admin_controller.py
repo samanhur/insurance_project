@@ -37,3 +37,8 @@ class AdminController:
     @classmethod
     def find_by_username(cls, username):
         return True, AdminDa.find_by_username(username)
+
+    @classmethod
+    def find_by_username_and_password(cls, username, password):
+        if AdminDa.find_by_username_and_password(username, password):
+            return True

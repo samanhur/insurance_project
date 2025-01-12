@@ -42,3 +42,8 @@ class EmployeeController:
     @classmethod
     def find_by_national_code(cls, national_code):
         return True, EmployeeDa.find_by_national_code(national_code)
+
+    @classmethod
+    def find_by_username_and_password(cls, username, password):
+        if EmployeeDa.find_by_username_and_password(username, password):
+            return True
