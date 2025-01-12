@@ -1,6 +1,10 @@
 import tkinter as tk
+import tkinter.messagebox as msg
 
-from view.components import TextWithLabel
+from controller.customer_controller import CustomerController
+from model.entity.customer import Customer
+from view.components.components import TextWithLabel
+from view.customer_view import CustomerPage
 
 
 class LoginPage(tk.Tk):
@@ -12,7 +16,16 @@ class LoginPage(tk.Tk):
         print("login employee")
 
     def login_customer(self):
-        print("login customer")
+        status, customer = CustomerController.find_by_username_and_password(
+            self.username_entry.value.get(),
+            self.password_entry.value.get(),
+        )
+        if status:
+            self.destroy()
+            CustomerPage(customer)
+
+        else:
+            msg.showerror("login Error", "Username or Password is not correct!")
 
     def __init__(self, role):
         super().__init__()
@@ -39,8 +52,8 @@ class LoginPage(tk.Tk):
         self.label.place(x=20, y=10)
 
         # Username and Password entries
-        self.username_entry = TextWithLabel(self, "Username : ", 20, 85, bg_color)
-        self.password_entry = TextWithLabel(self, "Password : ", 20, 115, bg_color)
+        self.username_entry = TextWithLabel(self, "Username : ", 20, 85, bg_color, 80)
+        self.password_entry = TextWithLabel(self, "Password : ", 20, 115, bg_color, 80)
 
         # Login button
         self.login_key = tk.Button(self, bg=bg_color, text="Login", width=10, command=self.command)
@@ -48,4 +61,5 @@ class LoginPage(tk.Tk):
 
         self.mainloop()
 
-# login_page = LoginPage("Login customer")
+
+# login_page = LoginPage("customer")

@@ -46,9 +46,32 @@ create table insurance_project.customers
     family        nvarchar(30) not null,
     father_name   nvarchar(30) not null,
     national_code varchar(10) unique not null,
-    birth_date    date        not null,
+    birth_date    date               not null,
     phone         varchar(12),
     username      nvarchar(30) unique not null,
     password      nvarchar(30) not null,
     status        tinyint
 );
+
+-- table for active customer's insurances
+create table insurance_project.active_insurance
+(
+    insurance_id       int primary key auto_increment,
+    service            nvarchar(30) not null,
+    number_of_duration int        not null,
+    duration_period    varchar(6) not null,
+    cost               int        not null,
+    expire_date        date       not null,
+    status             int        not null default 1,
+
+    customer_id        int,
+
+    foreign key (customer_id) references customers (person_id)
+);
+
+-- view for active insurances for customers
+create view insurance_project.insurance_list as
+select *
+from insurance_project.active_insurance
+         join insurance_project.customers
+              on insurance_project.active_insurance.customer_id = insurance_project.customers.person_id;

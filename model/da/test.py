@@ -60,10 +60,9 @@
 # print(AdminDa.find_by_username("samanhur"))
 # print(AdminDa.find_by_username("mehdi"))
 
-# -----------------------------------------------------------
 # customer_da.py test passed!
 
-# from model.da.customer_da import CustomerDa
+from model.da.customer_da import CustomerDa
 # from model.entity.customer import Customer
 # from datetime import date
 
@@ -87,4 +86,10 @@
 # print(CustomerDa.find_by_id(5))
 # print(CustomerDa.find_by_id(6))
 # print(CustomerDa.find_by_national_code("1234575890"))
-# print(CustomerDa.find_by_username("alip"))
+print(CustomerDa.find_by_username_and_password("samanhovar", "saman123"))
+
+# -----------------------------------------------------------
+
+
+# print(ActiveInsuranceDa.find_active_insurances(1))
+# print(ActiveInsuranceDa.expire(1))

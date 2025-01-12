@@ -2,13 +2,13 @@ import tkinter as tk
 from insurances_page import InsurancesPage
 from view.login_view import LoginPage
 from view.personnel_page import Personnel
-from view.signup_view import SignUp
+from view.signup_view import SignupPage
 
 
 class HomePage(tk.Tk):
     def sign_up(self):
         self.destroy()
-        SignUp()
+        SignupPage("Customer")
 
     def login(self):
         self.destroy()

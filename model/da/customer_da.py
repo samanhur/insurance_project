@@ -63,9 +63,17 @@ class CustomerDa(Da):
     def find_by_username(cls, username):
         cls.connect()
         cls.cursor.execute("SELECT * FROM CUSTOMERS WHERE USERNAME=%s", [username])
-        customers_list = cls.cursor.fetchall()
+        customer = cls.cursor.fetchone()
         cls.disconnect()
-        return customers_list
+        return customer
+
+    @classmethod
+    def find_by_username_and_password(cls, username, password):
+        cls.connect()
+        cls.cursor.execute("SELECT * FROM CUSTOMERS WHERE USERNAME=%s AND PASSWORD=%s", [username, password])
+        customer = cls.cursor.fetchone()
+        cls.disconnect()
+        return customer
 
     @classmethod
     def find_by_national_code(cls, national_code):
