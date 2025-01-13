@@ -2,7 +2,6 @@ import tkinter as tk
 
 from controller.employee_controller import EmployeeController
 from controller.insurances_controller import InsurancesController
-from view.components.components import CreateTreeview
 
 
 class AdminPage(tk.Tk):
@@ -75,5 +74,3 @@ class AdminPage(tk.Tk):
         self.reset_insurance_form()
 
         self.mainloop()
-
-# page = AdminPage()

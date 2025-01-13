@@ -1,7 +1,6 @@
 import tkinter as tk
 
 from controller.insurances_controller import InsurancesController
-from view.components.components import CreateTreeview
 
 
 class EmployeePage(tk.Tk):
@@ -63,6 +62,3 @@ class EmployeePage(tk.Tk):
         self.reset_form()
 
         self.mainloop()
-
-
-# page = EmployeePage()

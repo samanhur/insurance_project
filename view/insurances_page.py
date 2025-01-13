@@ -1,9 +1,9 @@
 import tkinter as tk
+import tkinter.messagebox as msg
 
 from controller.active_insurances_controller import ActiveInsuranceController
-from view.components.components import CreateTreeview
 from controller.insurances_controller import InsurancesController
-import tkinter.messagebox as msg
+from view.components.components import CreateTreeview
 
 
 class InsurancesPage(tk.Tk):

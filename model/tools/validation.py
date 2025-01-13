@@ -1,7 +1,8 @@
 import re
-from model.tools.decorators import exception_handling
 from datetime import date, datetime
+
 from controller.exceptions.my_exceptions import *
+from model.tools.decorators import exception_handling
 
 
 class Validator:

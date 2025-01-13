@@ -1,5 +1,3 @@
-from datetime import date
-
 from model.tools.validation import Validator
 
 
@@ -70,11 +68,5 @@ class Person:
     def status(self, status):
         if isinstance(status, bool):
             self._status = status
-        elif isinstance(status, int) and status in (1,0):
+        elif isinstance(status, int) and status in (1, 0):
             self._status = 1 if status == 1 else 0
-
-#
-# person = Person("saman", "ghasemi", "1234567890", "2004-07-31", "samanhur",
-#                 "S@man_G0510")
-#
-# print(list(person.__dict__.values()))

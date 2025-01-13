@@ -79,5 +79,3 @@ class CustomerPage(tk.Tk):
         self.customer_set_info()
 
         self.mainloop()
-
-# customer_page = CustomerPage()

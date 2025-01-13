@@ -71,5 +71,3 @@ class SignupPage(tk.Tk):
         self.signup_button.place(x=20, y=440)
 
         self.mainloop()
-
-# page = SignupPage("Customer")

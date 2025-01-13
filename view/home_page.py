@@ -1,5 +1,6 @@
 import tkinter as tk
-from insurances_page import InsurancesPage
+
+from view.insurances_page import InsurancesPage
 from view.login_view import LoginPage
 from view.personnel_page import Personnel
 from view.signup_view import SignupPage
@@ -62,6 +63,3 @@ class HomePage(tk.Tk):
         self.insurance_button.place(x=145, y=230)
 
         self.mainloop()
-
-
-home_page = HomePage()

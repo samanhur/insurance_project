@@ -79,5 +79,3 @@ class LoginPage(tk.Tk):
         self.login_key.place(x=144, y=155)
 
         self.mainloop()
-
-# login_page = LoginPage("customer")

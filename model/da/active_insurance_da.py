@@ -14,15 +14,6 @@ class ActiveInsuranceDa(Da):
         self.connection.commit()
         self.disconnect()
 
-    # def expire(self, active_insurance_id):
-    #     self.connect()
-    #     self.cursor.execute(
-    #         "UPDATE ACTIVE_INSURANCE SET STATUS=%s WHERE INSURANCE_ID=%s",
-    #         [0, active_insurance_id]
-    #     )
-    #     self.connection.commit()
-    #     self.disconnect()
-
     def find_all(self):
         self.connect()
         self.cursor.execute("SELECT * FROM ACTIVE_INSURANCE")
@@ -50,12 +41,3 @@ class ActiveInsuranceDa(Da):
         active_insurances_list = self.cursor.fetchall()
         self.disconnect()
         return active_insurances_list
-
-    # def find_active_insurances(self, customer_id, status=1):
-    #     self.connect()
-    #     self.cursor.execute(
-    #         "SELECT SERVICE, NUMBER_OF_DURATION, DURATION_PERIOD, EXPIRE_DATE FROM ACTIVE_INSURANCE WHERE CUSTOMER_ID = %s AND STATUS=%s",
-    #         [customer_id, status])
-    #     active_insurances_list = self.cursor.fetchall()
-    #     self.disconnect()
-    #     return active_insurances_list
