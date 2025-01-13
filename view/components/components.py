@@ -1,6 +1,5 @@
 from tkinter import *
 import tkinter.ttk
-import tkinter.messagebox as msg
 
 
 class CreateTreeview:
@@ -20,18 +19,15 @@ class CreateTreeview:
             value_list.append(tuple(values))
 
         if value_list:
-            for value in value_list:
-                self.table.insert("", END, values=tuple(value))
+            for values in value_list:
+                self.table.insert("", END, tags=values[0], values=tuple(values[1:]))
 
     def left_click_table(self, event):
-        selected_id = self.table.focus()
-        if self.table.item(selected_id)["values"]:
+        selected_item = self.table.focus()
+        if self.table.item(selected_item):
             pass
 
-    def __init__(self, master, columns_number, show, columns_width, column_height, column_title, x, y, clickable=True,
-                 enter=False, buy=False):
-        self.enter = enter
-        self.buy = buy
+    def __init__(self, master, columns_number, show, columns_width, column_height, column_title, x, y, clickable=True):
         columns = []
         for i in range(columns_number):
             columns.append(i)

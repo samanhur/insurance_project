@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from model.da.insurance_list_da import InsuranceListDa
+from controller.active_insurances_controller import ActiveInsuranceController
 from view.components.components import TextWithLabel, CreateTreeview
 from view.insurances_page import InsuranceBuy
 
@@ -8,15 +8,15 @@ from view.insurances_page import InsuranceBuy
 class CustomerPage(tk.Tk):
 
     def reset_form(self):
-        status, doc_list = InsuranceListDa.find_by_status(self.customer_id)
+        status, doc_list = ActiveInsuranceController.find_by_expire_date(self.customer_id)
         if status:
-            self.tree_view.refresh_table(doc_list, [1, 2, 3, 5])
+            self.tree_view.refresh_table(doc_list, [0, 1, 2, 3, 5])
 
     def edit(self):
         print("edit")
 
     def insurances(self):
-        insurance_customer = InsuranceBuy()
+        InsuranceBuy(self.customer_id)
 
     def customer_set_info(self):
         self.name.value.set(self.customer_info.name)
@@ -28,6 +28,9 @@ class CustomerPage(tk.Tk):
         self.phone.value.set(self.customer_info.phone)
         self.username.value.set(self.customer_info.username)
         self.password.value.set(self.customer_info.password)
+
+    def update_insurance_list(self):
+        self.reset_form()
 
     def __init__(self, customer_info):
         super().__init__(None)
@@ -52,11 +55,17 @@ class CustomerPage(tk.Tk):
         self.username = TextWithLabel(self, "Username:", 20, 300, bg_color, 120, state=True)
         self.password = TextWithLabel(self, "Password:", 20, 340, bg_color, 120)
 
+        # Buttons
         self.edit_button = tk.Button(self, text="Edit", width=34, bg=bg_color, command=self.edit)
         self.edit_button.place(x=20, y=400)
 
-        self.edit_button = tk.Button(self, text="Insurances", width=34, bg=bg_color, command=self.insurances)
-        self.edit_button.place(x=20, y=450)
+        self.insurances_button = tk.Button(self, text="Insurances", width=34, bg=bg_color, command=self.insurances)
+        self.insurances_button.place(x=20, y=450)
+
+        self.update_insurance_list_button = tk.Button(
+            self, text="Update Insurance List", width=65, bg=bg_color, command=self.update_insurance_list
+        )
+        self.update_insurance_list_button.place(x=300, y=450)
 
         # active services table
         self.services = tk.Label(self, text="Active services", bg=bg_color, font=("Arial", 14))

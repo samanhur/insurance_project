@@ -35,7 +35,9 @@ class InvalidAmountError(Exception):
 
 class InvalidTimeDurationError(Exception):
     def __init__(self, *args):
-        super().__init__(*args, "Time duration entered is not valid!\nIt's must be from(days, month, year, years)")
+        text = "Time duration entered is not valid!\n"
+        text += "It's must be from(\"days\", \"month\", \"months\", \"season\", \"seasons\", \"year\", \"years\""
+        super().__init__(*args, text)
 
 
 class DuplicateUsernameError(Exception):

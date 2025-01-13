@@ -19,6 +19,7 @@ class CustomerController:
             return True, f"Customer({customer}) saved successfully"
 
     @classmethod
+    @exception_handling
     def edit(cls, person_id, name, family, father_name, national_code, birth_date, phone, username, password, status):
         customer = Customer(name, family, father_name, national_code, birth_date, phone, username, password, status)
         customer.person_id = person_id
@@ -68,6 +69,5 @@ class CustomerController:
             )
             customer.person_id = customer_data[0]
             return True, customer
-
 
 # print(CustomerController.find_by_username_and_password("samanhovar", "saman123"))

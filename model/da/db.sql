@@ -56,17 +56,18 @@ create table insurance_project.customers
 -- table for active customer's insurances
 create table insurance_project.active_insurance
 (
-    insurance_id       int primary key auto_increment,
+    active_insurance_id int primary key auto_increment,
     service            nvarchar(30) not null,
     number_of_duration int        not null,
-    duration_period    varchar(6) not null,
+    duration_period    varchar(7) not null,
     cost               int        not null,
     expire_date        date       not null,
-    status             int        not null default 1,
 
     customer_id        int,
+    insurance_id       int,
 
-    foreign key (customer_id) references customers (person_id)
+    foreign key (customer_id) references customers (person_id),
+    foreign key (insurance_id) references insurances (insurance_id)
 );
 
 -- view for active insurances for customers
