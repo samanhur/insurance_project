@@ -1,7 +1,17 @@
+from sqlalchemy import Column, Integer, String
+
 from model.tools.validation import Validator
+from model.entity.base import Base
 
 
-class Admin:
+class Admin(Base):
+    __tablename__ = "admins"
+    admin_id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(30), nullable=False)
+    family = Column(String(30), nullable=False)
+    username = Column(String(30), unique=True, nullable=False)
+    password = Column(String(30), nullable=False)
+
     def __init__(self, name, family, username, password):
         self.admin_id = None
         self.name = name

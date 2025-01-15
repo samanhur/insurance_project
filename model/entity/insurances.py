@@ -1,7 +1,17 @@
+from sqlalchemy import Column, Integer, String
+
+from model.entity.base import Base
 from model.tools.validation import Validator
 
 
-class Insurances:
+class Insurances(Base):
+    __tablename__ = "insurances"
+    insurance_id = Column(Integer, primary_key=True, autoincrement=True)
+    service = Column(String(30), nullable=False)
+    number_of_duration = Column(Integer, nullable=False)
+    duration_period = Column(String(7), nullable=False)
+    cost = Column(Integer, nullable=False)
+
     def __init__(self, service, number_of_duration, duration_period, cost):
         self.insurance_id = None
         self.service = service

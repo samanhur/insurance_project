@@ -1,8 +1,23 @@
+from sqlalchemy import Column, Integer, String, Date, Boolean
+
 from model.entity.person import Person
 from model.tools.validation import Validator
+from model.entity.base import Base
 
 
-class Employee(Person):
+class Employee(Person, Base):
+    __tablename__ = "employees"
+    person_id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(30), nullable=False)
+    family = Column(String(30), nullable=False)
+    national_code = Column(String(10), unique=True, nullable=False)
+    birth_date = Column(Date, nullable=False)
+    username = Column(String(30), unique=True, nullable=False)
+    password = Column(String(30), nullable=False)
+    status = Column(Boolean, default=True)
+    role = Column(String(20))
+    salary = Column(Integer)
+
     def __init__(self, name, family, national_code,
                  birth_date, username, password, status, role, salary):
         super().__init__(name, family, national_code, birth_date, username, password, status)
