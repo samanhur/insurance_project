@@ -1,11 +1,11 @@
 from controller.exceptions.my_exceptions import DuplicateUsernameError, DuplicateNationalCodeError
-from model.da.customer_da import CustomerDa
+from model.da.sqlalchemy_da.da import DataAccess
 from model.entity.customer import Customer
 from model.tools.decorators import exception_handling
 
 
 class CustomerController:
-    customer_da = CustomerDa()
+    da = DataAccess(Customer)
 
     @classmethod
     @exception_handling
@@ -16,7 +16,7 @@ class CustomerController:
             raise DuplicateNationalCodeError()
         else:
             customer = Customer(name, family, father_name, national_code, birth_date, phone, username, password, status)
-            cls.customer_da.save(customer)
+            cls.da.save(customer)
             return True, f"Customer({customer}) saved successfully"
 
     @classmethod
@@ -24,39 +24,39 @@ class CustomerController:
     def edit(cls, person_id, name, family, father_name, national_code, birth_date, phone, username, password, status):
         customer = Customer(name, family, father_name, national_code, birth_date, phone, username, password, status)
         customer.person_id = person_id
-        cls.customer_da.edit(customer)
+        cls.da.edit(customer)
         return True, f"Customer({customer}) edited successfully"
 
     @classmethod
     def remove(cls, person_id):
-        cls.customer_da.remove(person_id)
+        cls.da.remove(person_id)
         return True, f"Customer({person_id}) removed successfully"
 
     @classmethod
     def find_all(cls):
-        return True, cls.customer_da.find_all()
+        return True, cls.da.find_all()
 
     @classmethod
     def find_by_status(cls, status):
-        return True, cls.customer_da.find_by_status(status)
+        return cls.da.find_by(Customer.status == status)
 
     @classmethod
     def find_by_id(cls, person_id):
-        return True, cls.customer_da.find_by_id(person_id)
+        return cls.da.find_by_id(person_id)
 
     @classmethod
     def find_by_username(cls, username):
-        return True, cls.customer_da.find_by_username(username)
+        return cls.da.find_by(Customer.username == username)
 
     @classmethod
     def find_by_national_code(cls, national_code):
-        return True, cls.customer_da.find_by_national_code(national_code)
+        return cls.da.find_by(Customer.national_code == national_code)
 
     @classmethod
     @exception_handling
     def find_by_username_and_password(cls, username, password):
-        if cls.customer_da.find_by_username_and_password(username, password):
-            customer_data = cls.customer_da.find_by_username_and_password(username, password)
+        if cls.da.find_by(Customer.username == username) and cls.da.find_by(Customer.password == password):
+            customer_data = cls.da.find_by_id(Customer.person_id)
             customer = Customer(
                 customer_data[1],
                 customer_data[2],

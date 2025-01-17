@@ -54,15 +54,15 @@ from datetime import date
 
 
 # CustomerController.save("mohammad", "ghasemi", "ali", "1245789630", date(1990,8,27),
-#                         "09122724558", "mehdi", "mehdi1351", 1)
+#                         "09122777777", "mehdi", "mehdi1351", 1)
 
-# CustomerController.edit(7, "mohammad", "ghasemi", "ali", "1245789630", date(1990,8,27),
-#                         "09121234567", "mehdi", "mehdigh", 1)
+# CustomerController.edit(1, "mohammad", "ghasemi", "ali", "1245789630", date(1990,8,27),
+#                         "+989122777777", "mehdi", "mehdigh", 1)
 
-# CustomerController.remove(6)
+# CustomerController.remove(1)
 
 # print(CustomerController.find_all())
-# print(CustomerController.find_by_national_code("1234575890"))
+# print(CustomerController.find_by_national_code("9876543210"))
 # print(CustomerController.find_by_status(1))
 # print(CustomerController.find_by_username("mehdigh"))
-# print(CustomerController.find_by_id(1))
+# print(CustomerController.find_by_id(3))
